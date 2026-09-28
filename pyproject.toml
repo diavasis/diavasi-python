@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "diavasi-data"
+name = "diavasi-client"
 version = "0.1.0"
 description = "Thin client for the Diavasi data plane"
 readme = "README.md"
@@ -17,4 +17,4 @@ Homepage = "https://github.com/diavasis/diavasi-python"
 Repository = "https://github.com/diavasis/diavasi-python"
 
 [tool.setuptools.packages.find]
-include = ["diavasi_data*"]
+include = ["diavasi_client*"]

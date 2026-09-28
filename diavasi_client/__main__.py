@@ -6,7 +6,7 @@ import argparse
 import queue
 import sys
 
-from diavasi_data.client import CallError, ProtocolError, Session
+from diavasi_client.client import CallError, ProtocolError, Session
 
 
 def main() -> int:

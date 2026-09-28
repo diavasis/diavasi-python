@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import sys
 
-from diavasi_data import CallError, ProtocolError, consume
+from diavasi_client import CallError, ProtocolError, consume
 
 
 def main() -> int:

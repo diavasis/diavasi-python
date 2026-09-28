@@ -1,18 +1,18 @@
 # Python client
 
 [![CI](https://github.com/diavasis/diavasi-python/actions/workflows/ci.yml/badge.svg)](https://github.com/diavasis/diavasi-python/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/diavasi-data.svg)](https://pypi.org/project/diavasi-data/)
-[![Python](https://img.shields.io/pypi/pyversions/diavasi-data.svg)](https://pypi.org/project/diavasi-data/)
+[![PyPI](https://img.shields.io/pypi/v/diavasi-client.svg)](https://pypi.org/project/diavasi-client/)
+[![Python](https://img.shields.io/pypi/pyversions/diavasi-client.svg)](https://pypi.org/project/diavasi-client/)
 [![license](https://img.shields.io/github/license/diavasis/diavasi-python)](https://github.com/diavasis/diavasi-python/blob/main/LICENSE)
 
-`diavasi_data.consume` is a thin client of `diavasi.data.v1`. It opens a TLS stream, sends the bearer token, Hello version 1, then JoinGroup. The iterator yields each batch. Continuing the iterator acks that `batch_id`. The client stores no cursor and does not dedupe on `record_id`. A dropped stream is how unacked batches return. Reconnect with the same `consumer_id` and the server replays them.
+`diavasi_client.consume` is a thin client of `diavasi.data.v1`. It opens a TLS stream, sends the bearer token, Hello version 1, then JoinGroup. The iterator yields each batch. Continuing the iterator acks that `batch_id`. The client stores no cursor and does not dedupe on `record_id`. A dropped stream is how unacked batches return. Reconnect with the same `consumer_id` and the server replays them.
 
-`proto/data.proto` in this repository is the copy of `diavasi.data.v1` from [github.com/diavasis/diavasi](https://github.com/diavasis/diavasi) tag `v0.13.0`. Package `diavasi-data` is version 0.1.0.
+`proto/data.proto` in this repository is the copy of `diavasi.data.v1` from [github.com/diavasis/diavasi](https://github.com/diavasis/diavasi) tag `v0.13.0`. Package `diavasi-client` is version 0.1.0.
 
 ## Install
 
 ```bash
-pip install diavasi-data==0.1.0
+pip install diavasi-client==0.1.0
 ```
 
 From a checkout of this repository:
@@ -26,7 +26,7 @@ export PYTHONPATH=.
 ## Library
 
 ```python
-from diavasi_data import CallError, ProtocolError, consume
+from diavasi_client import CallError, ProtocolError, consume
 
 try:
     for batch in consume(
@@ -69,7 +69,7 @@ PYTHONPATH=. .venv/bin/python examples/process.py
 ## Example
 
 ```bash
-PYTHONPATH=. python -m diavasi_data \
+PYTHONPATH=. python -m diavasi_client \
   --addr 127.0.0.1:7710 --ca /tmp/diavasi-sdk/dataplane-ca.crt \
   --token sdk-demo --group demo --consumer python --total 8
 ```

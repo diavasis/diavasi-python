@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 
 import grpc
 
-from diavasi_data import data_pb2, data_pb2_grpc
+from diavasi_client import data_pb2, data_pb2_grpc
 
 
 class ProtocolError(Exception):
@@ -125,7 +125,7 @@ class Session:
             except grpc.RpcError as exc:
                 self._inbound.put(("grpc", (exc.code().name, exc.details() or "")))
 
-        self._thread = threading.Thread(target=read, name="diavasi-data", daemon=True)
+        self._thread = threading.Thread(target=read, name="diavasi-client", daemon=True)
         self._thread.start()
         kind, payload = self._inbound.get(timeout=30)
         self._raise(kind, payload)

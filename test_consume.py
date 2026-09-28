@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 import unittest
 
-from diavasi_data import ProtocolError, Session
+from diavasi_client import ProtocolError, Session
 
 
 def _env() -> tuple[str, str, str] | None:
